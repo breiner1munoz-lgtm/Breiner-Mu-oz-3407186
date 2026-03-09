@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda de Instrumentos Musicales</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1>🎵 Tienda de Instrumentos Musicales</h1>
+      <p class="subtitle">Gestión de inventario y disponibilidad</p>
+
+      <div class="stats-summary">
+        <span class="stat">Total: <strong id="stat-total">0</strong></span>
+        <span class="stat">Disponibles: <strong id="stat-active">0</strong></span>
+        <span class="stat">Agotados: <strong id="stat-inactive">0</strong></span>
+      </div>
+    </header>
+
+    <!-- Formulario -->
+    <section class="form-section">
+      <h2 id="form-title">➕ Nuevo Instrumento</h2>
+
+      <form id="item-form" class="item-form">
+        <div class="form-group">
+          <label for="item-name">Nombre del instrumento *</label>
+          <input
+            type="text"
+            id="item-name"
+            placeholder="Ej: Guitarra eléctrica Fender"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="item-description">Descripción</label>
+          <textarea
+            id="item-description"
+            rows="3"
+            placeholder="Marca, modelo, características..."
+          ></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="item-category">Categoría</label>
+            <select id="item-category">
+              <option value="guitar">🎸 Guitarra</option>
+              <option value="keyboard">🎹 Teclado</option>
+              <option value="percussion">🥁 Percusión</option>
+              <option value="wind">🎷 Viento</option>
+              <option value="strings">🎻 Cuerdas</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="item-priority">Nivel de stock</label>
+            <select id="item-priority">
+              <option value="high">🟢 Stock alto</option>
+              <option value="medium" selected>🟡 Stock medio</option>
+              <option value="low">🔴 Stock bajo</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">
+            Guardar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="cancel-btn"
+            style="display: none"
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filters-section">
+      <div class="filters">
+
+        <div class="filter-group">
+          <label for="filter-status">Disponibilidad</label>
+          <select id="filter-status">
+            <option value="all">Todos</option>
+            <option value="active">Disponibles</option>
+            <option value="inactive">Agotados</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-category">Categoría</label>
+          <select id="filter-category">
+            <option value="all">Todas</option>
+            <option value="guitar">Guitarra</option>
+            <option value="keyboard">Teclado</option>
+            <option value="percussion">Percusión</option>
+            <option value="wind">Viento</option>
+            <option value="strings">Cuerdas</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <label for="filter-priority">Stock</label>
+          <select id="filter-priority">
+            <option value="all">Todos</option>
+            <option value="high">Alto</option>
+            <option value="medium">Medio</option>
+            <option value="low">Bajo</option>
+          </select>
+        </div>
+
+        <div class="filter-group search-group">
+          <label for="search-input">Buscar</label>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Buscar instrumentos..."
+          />
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Lista -->
+    <section class="items-section">
+      <div class="items-header">
+        <h2>🎼 Inventario</h2>
+        <button class="btn btn-outline" id="clear-inactive">
+          🗑️ Eliminar agotados
+        </button>
+      </div>
+
+      <div id="item-list" class="item-list"></div>
+
+      <div id="empty-state" class="empty-state">
+        <p>🎶 No hay instrumentos registrados</p>
+        <p class="empty-state-hint">
+          Agrega tu primer instrumento usando el formulario
+        </p>
+      </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section class="detailed-stats">
+      <h3>📊 Estadísticas del Inventario</h3>
+      <div id="stats-details" class="stats-grid"></div>
+    </section>
+
+  </div>
+
+  <!-- Script principal -->
+  <script src="starter/script.js"></script>
+</body>
+</html>
